@@ -21,9 +21,6 @@ object Api {
     val cache = Cache(File(KotApplication.context!!.cacheDir, "HttpCache"), (1024 * 1024 * 10).toLong())
 
     private fun initOkHttpClient() {
-        Logger.e("hahahahahahha")
-//        synchronized(Api) {
-//            if (false) {
                 mOkHttpClient = OkHttpClient.Builder()
                         .cache(cache)
                         .addNetworkInterceptor(CacheInterceptor())
@@ -32,19 +29,6 @@ object Api {
                         .writeTimeout(30, TimeUnit.SECONDS)
                         .addInterceptor(ParameterInterceptor())
                         .build()
-                Logger.e("sssssss")
-
-//                        val interceptors :ArrayList<Interceptor> = ArrayList()
-//                        interceptors.addAll(mOkHttpClient.interceptors())
-//                        interceptors.add(RetryAndFollowUpInterceptor(mOkHttpClient,true))
-//                        interceptors.add(BridgeInterceptor(mOkHttpClient.cookieJar()))
-//                        interceptors.add(CacheInterceptor())
-//                        interceptors.addAll(mOkHttpClient.networkInterceptors())
-//                        interceptors.add(CallServerInterceptor(true))
-//                        val chain : Interceptor.Chain =RealInterceptorChain(interceptors,null,null,
-//                                )
-//            }
-//        }
     }
 
     class ParameterInterceptor : Interceptor {

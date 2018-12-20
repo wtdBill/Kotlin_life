@@ -1,13 +1,20 @@
 package com.example.ypp.life.utils
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
+import android.os.Build
+import android.view.WindowManager
 import com.example.ypp.life.application.KotApplication
 import java.util.*
+import android.annotation.TargetApi
+import android.graphics.Color
+import android.view.View
+
 
 /**
  * Created by ypp0623 on 2018/11/15.

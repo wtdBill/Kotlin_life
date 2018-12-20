@@ -22,7 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.Main2Activity"></activity>
+        <activity android:name=".activity.NewsActivity" />
+        <activity android:name=".activity.WebViewActivity" />
+        <activity android:name=".activity.Main3Activity"></activity>
     </application>
 
 </manifest>

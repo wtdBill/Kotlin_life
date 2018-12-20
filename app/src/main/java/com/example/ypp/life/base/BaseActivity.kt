@@ -3,10 +3,10 @@ package com.example.ypp.life.base
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
-import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
 import com.eightbitlab.rxbus.Bus
 import com.example.ypp.life.utils.SPUtils
+import com.example.ypp.life.utils.StatusBarUtil
 
 /**
  * Created by ypp0623 on 2018/11/15.
