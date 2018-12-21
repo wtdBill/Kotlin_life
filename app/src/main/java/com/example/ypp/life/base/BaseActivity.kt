@@ -18,6 +18,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        StatusBarUtil.setTranslucentForCoordinatorLayout(this,127)
         mUserId = SPUtils.userId
         mContext = this
         init()

@@ -5,12 +5,14 @@ import android.annotation.TargetApi
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.WindowManager
 import android.webkit.*
 import android.widget.ProgressBar
 import com.example.ypp.life.R
 import com.example.ypp.life.application.HostRuntime
 import com.example.ypp.life.application.SonicSessionClientImpl
+import com.example.ypp.life.utils.StatusBarUtil
 import com.tencent.sonic.sdk.SonicConfig
 import com.tencent.sonic.sdk.SonicEngine
 import com.tencent.sonic.sdk.SonicSession
@@ -27,6 +29,7 @@ class WebViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web_view)
+        StatusBarUtil.setTranslucentForCoordinatorLayout(this,127)
         url = intent.getStringExtra(PARAM_URL)
 
         window.addFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED)
@@ -84,6 +87,9 @@ class WebViewActivity : AppCompatActivity() {
         webView!!.webChromeClient = object : WebChromeClient() {
             override fun onProgressChanged(view: WebView, newProgress: Int) {
                 progressbar!!.progress = newProgress
+                if (newProgress == 100){
+                    progressbar!!.visibility = View.GONE
+                }
                 super.onProgressChanged(view, newProgress)
             }
         }

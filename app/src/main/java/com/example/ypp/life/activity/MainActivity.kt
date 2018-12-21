@@ -4,12 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import com.example.ypp.life.R
 import com.example.ypp.life.base.BaseActivity
+import com.example.ypp.life.utils.StatusBarUtil
 
 class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        StatusBarUtil.setTranslucentForCoordinatorLayout(this,127)
         handler.postDelayed({ mContext.startActivity(Intent(mContext, NewsActivity::class.java)) }, 1000)
 //        Observable.just(1, 2, 3, 4)
 //                .map {

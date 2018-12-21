@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import android.view.View
 import com.example.ypp.life.Fragment.NewsFragment
 import com.example.ypp.life.NewsAdapter
 import com.example.ypp.life.R
@@ -19,12 +20,21 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigat
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerIndicator
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView
+import com.example.ypp.life.R.id.mViewPager
+import com.example.ypp.life.application.KotApplication.Companion.context
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ColorTransitionPagerTitleView
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.LinePagerIndicator
+
+
+
 
 class NewsActivity : BaseActivity() {
+    companion object {
+        private val typeArray = arrayOf("top", "shehui", "guonei", "guoji", "yule", "tiyu", "junshi", "keji", "caijing", "shishang")
+        private val typeText = arrayOf("头条", "社会", "国内", "国际", "娱乐", "体育", "军事", "科技", "财经", "时尚")
+    }
     private val newsArray: ArrayList<NewsEntity.ResultBean.DataBean> = ArrayList()
     private lateinit var mAdapter: NewsAdapter
-    private val typeArray = arrayOf("top", "shehui", "guonei", "guoji", "yule", "tiyu", "junshi", "keji", "caijing", "shishang")
-    private val typeText = arrayOf("头条", "社会", "国内", "国际", "娱乐", "体育", "军事", "科技", "财经", "时尚")
     private lateinit var adapter: MyAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +43,7 @@ class NewsActivity : BaseActivity() {
         StatusBarUtil.setTranslucentForCoordinatorLayout(this,127)
         adapter = MyAdapter(supportFragmentManager)
         mViewPager.adapter = adapter
+        mViewPager.offscreenPageLimit = typeArray.size
         initIndicator()
     }
 
@@ -40,16 +51,26 @@ class NewsActivity : BaseActivity() {
         val commonNavigator = CommonNavigator(mContext)
         commonNavigator.adapter = object : CommonNavigatorAdapter() {
             override fun getTitleView(p0: Context?, p1: Int): IPagerTitleView {
-                val simplePagerTitleView = ScaleTransitionPagerTitleView(mContext)
-                simplePagerTitleView.text = typeText[p1]
-                simplePagerTitleView.setTextColor(Color.parseColor("#4A4A4A"))
-                simplePagerTitleView.textSize = 18f
-                simplePagerTitleView.minScale = 1.0f
-                simplePagerTitleView.setOnClickListener {
+
+                val colorTransitionPagerTitleView = ColorTransitionPagerTitleView(context)
+                colorTransitionPagerTitleView.normalColor = Color.GRAY
+                colorTransitionPagerTitleView.selectedColor = Color.BLACK
+                colorTransitionPagerTitleView.text = typeText[p1]
+                colorTransitionPagerTitleView.setOnClickListener {
                     mViewPager.currentItem = p1
                     adapter.notifyDataSetChanged()
                 }
-                return simplePagerTitleView
+                return colorTransitionPagerTitleView
+//                val simplePagerTitleView = ScaleTransitionPagerTitleView(mContext)
+//                simplePagerTitleView.text = typeText[p1]
+//                simplePagerTitleView.setTextColor(Color.parseColor("#4A4A4A"))
+//                simplePagerTitleView.textSize = 18f
+//                simplePagerTitleView.minScale = 1.0f
+//                simplePagerTitleView.setOnClickListener {
+//                    mViewPager.currentItem = p1
+//                    adapter.notifyDataSetChanged()
+//                }
+//                return simplePagerTitleView
             }
 
             override fun getCount(): Int {
@@ -57,7 +78,9 @@ class NewsActivity : BaseActivity() {
             }
 
             override fun getIndicator(p0: Context?): IPagerIndicator? {
-                return null
+                val indicator = LinePagerIndicator(context)
+                indicator.mode = LinePagerIndicator.MODE_WRAP_CONTENT
+                return indicator
             }
         }
         indicator.navigator = commonNavigator
