@@ -12,7 +12,7 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         StatusBarUtil.setTranslucentForCoordinatorLayout(this,127)
-        handler.postDelayed({ mContext.startActivity(Intent(mContext, NewsActivity::class.java)) }, 1000)
+        handler.postDelayed({ mContext.startActivity(Intent(mContext, JokeActivity::class.java)) }, 1000)
 //        Observable.just(1, 2, 3, 4)
 //                .map {
 //                    when (it) {
