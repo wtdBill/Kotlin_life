@@ -27,6 +27,7 @@ object SPUtils {
                 editor.putLong(key, value)
             else
                 editor.putString(key, value.toString())
+            editor.apply()
         } catch (e: Exception) {
             e.printStackTrace()
         }

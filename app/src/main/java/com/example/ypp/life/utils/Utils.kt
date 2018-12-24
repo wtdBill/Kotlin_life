@@ -55,6 +55,7 @@ class Utils {
             return info.isAvailable
         }
 
+        @JvmStatic
         @SuppressLint("MissingPermission")
         fun getNetworkInfo(context: Context): NetworkInfo {
             val cm: ConnectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

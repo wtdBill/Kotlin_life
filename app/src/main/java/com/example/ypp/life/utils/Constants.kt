@@ -16,4 +16,13 @@ object Constants {
     const val JUHE_JOKE_KEY = "22b7e25007155c25551c4cd512828cb9"
     const val JUHE_JOKE = "joke/content/list.php"
 
+
+
+
+
+
+
+
+    const val JOKE_TIME = "joke_time"
+
 }
