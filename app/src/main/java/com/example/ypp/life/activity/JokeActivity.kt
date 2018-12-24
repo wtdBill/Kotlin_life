@@ -36,10 +36,10 @@ class JokeActivity : BaseActivity() {
         setContentView(R.layout.activity_joke)
         StatusBarUtil.setTranslucentForCoordinatorLayout(this, 127)
         adapter = JokeAdapter(R.layout.joke_item, jokeArrry)
-        adapter.setOnLoadMoreListener(BaseQuickAdapter.RequestLoadMoreListener {
+        adapter.setOnLoadMoreListener {
             page++
             getJokeData()
-        })
+        }
         mRecyclerView.adapter = adapter
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
