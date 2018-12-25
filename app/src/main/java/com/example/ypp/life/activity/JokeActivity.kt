@@ -2,6 +2,7 @@ package com.example.ypp.life.activity
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.view.animation.ScaleAnimation
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.example.ypp.life.R
 import com.example.ypp.life.adapter.JokeAdapter
@@ -26,6 +27,7 @@ class JokeActivity : BaseActivity() {
     private val type_after = "asc"
     private val type_before = "desc"
     private lateinit var adapter: JokeAdapter
+    private lateinit var scaleAnim:ScaleAnimation
 
     companion object {
         private var time: String = System.currentTimeMillis().toString()
@@ -33,6 +35,7 @@ class JokeActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        overridePendingTransition(R.anim.test_anim,R.anim.test_anim)
         setContentView(R.layout.activity_joke)
         StatusBarUtil.setTranslucentForCoordinatorLayout(this, 127)
         adapter = JokeAdapter(R.layout.joke_item, jokeArrry)
@@ -51,7 +54,8 @@ class JokeActivity : BaseActivity() {
     private fun getJokeData() {
         time = SPUtils.get(Constants.JOKE_TIME, "1418745237") as String
         var tm = time.substring(0, 9)
-        tm += time[9] + 1
+        tm += time[9]
+        Logger.e(tm)
         Api.juHeService.getJoke(type_after, page, count, tm, Constants.JUHE_JOKE_KEY)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -7,7 +7,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.ypp.life.NewsAdapter
+import com.example.ypp.life.adapter.NewsAdapter
 
 import com.example.ypp.life.R
 import com.example.ypp.life.network.Api

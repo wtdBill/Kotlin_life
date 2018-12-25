@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.animation.Animation;
 
 import com.example.ypp.life.R;
 import com.example.ypp.life.utils.Utils;
@@ -21,6 +22,8 @@ public class Main3Activity extends AppCompatActivity {
         String time = "1111111111";
         String a = time.substring(0, 9);
         a = a + time.charAt(10);
+        overridePendingTransition(R.anim.test_anim,R.anim.test_anim);
+
 
     }
 

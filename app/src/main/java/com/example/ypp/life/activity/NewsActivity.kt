@@ -6,11 +6,9 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import android.view.View
 import com.example.ypp.life.Fragment.NewsFragment
-import com.example.ypp.life.NewsAdapter
+import com.example.ypp.life.adapter.NewsAdapter
 import com.example.ypp.life.R
-import com.example.ypp.life.adapter.ScaleTransitionPagerTitleView
 import com.example.ypp.life.base.BaseActivity
 import com.example.ypp.life.network.entity.NewsEntity
 import com.example.ypp.life.utils.StatusBarUtil
@@ -20,7 +18,6 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigat
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerIndicator
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView
-import com.example.ypp.life.R.id.mViewPager
 import com.example.ypp.life.application.KotApplication.Companion.context
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ColorTransitionPagerTitleView
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.LinePagerIndicator

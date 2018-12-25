@@ -1,12 +1,12 @@
-package com.example.ypp.life
+package com.example.ypp.life.adapter
 
 import android.content.Intent
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
+import com.example.ypp.life.R
 import com.example.ypp.life.activity.WebViewActivity
 import com.example.ypp.life.network.entity.NewsEntity
 

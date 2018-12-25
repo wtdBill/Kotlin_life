@@ -1,5 +1,6 @@
 package com.example.ypp.life.utils
 
+import android.annotation.SuppressLint
 import android.text.TextUtils
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -9,11 +10,10 @@ import java.util.Locale
 
 /**
  * 日期工具类
- * Created by wangcunjun on 2017/5/22.
+ * Created by Yin on 2017/5/22.
  */
 
 object DateUtils {
-
     private val DATEFORMAT_YMD_HMS = SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss", Locale.getDefault())
     private val DATEFORMAT_YMD = SimpleDateFormat("yyyy年MM月dd日", Locale.getDefault())
     private val DATEFORMAT_YMD_DOT = SimpleDateFormat("yyyy.MM.dd", Locale.getDefault())
@@ -103,6 +103,7 @@ object DateUtils {
     }
 
     // 毫秒
+    @SuppressLint("SimpleDateFormat")
     @JvmOverloads
     fun date2MS(date: String, format: String = "yyyy-MM-dd H:mm:ss"): Long {
         if (TextUtils.isEmpty(date)) {
@@ -136,12 +137,14 @@ object DateUtils {
         return date2MS(date, "yyyy-MM-dd HH:mm:ss") // 默认格式
     }
 
-    // 毫秒转星期几 (星期一 至 星期天)
+    @SuppressLint("SimpleDateFormat")
+// 毫秒转星期几 (星期一 至 星期天)
     fun ms2WeekString(ms: Long): String {
         return SimpleDateFormat("EEEE").format(Date(ms))
     }
 
-    // 毫秒转 周几 (1-7)
+    @SuppressLint("SimpleDateFormat")
+// 毫秒转 周几 (1-7)
     fun ms2Week(ms: Long): Int {
         val cal = Calendar.getInstance()
         try {
