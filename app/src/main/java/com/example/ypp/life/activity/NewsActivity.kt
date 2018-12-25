@@ -61,16 +61,6 @@ class NewsActivity : BaseActivity() {
                     adapter.notifyDataSetChanged()
                 }
                 return colorTransitionPagerTitleView
-//                val simplePagerTitleView = ScaleTransitionPagerTitleView(mContext)
-//                simplePagerTitleView.text = typeText[p1]
-//                simplePagerTitleView.setTextColor(Color.parseColor("#4A4A4A"))
-//                simplePagerTitleView.textSize = 18f
-//                simplePagerTitleView.minScale = 1.0f
-//                simplePagerTitleView.setOnClickListener {
-//                    mViewPager.currentItem = p1
-//                    adapter.notifyDataSetChanged()
-//                }
-//                return simplePagerTitleView
             }
 
             override fun getCount(): Int {
