@@ -10,6 +10,7 @@ import com.example.ypp.life.BuildConfig
 object Logger {
     private var isLog = BuildConfig.DEBUG
     private val tag: String = "kotlin_study"
+    val max_str_length = 2001 - tag.length
     fun setTag(isLog: Boolean) {
         Logger.isLog = isLog
     }
@@ -24,8 +25,13 @@ object Logger {
     }
 
     fun e(@NonNull msg: String) {
+        var mes = msg
         if (isLog) {
-            Log.e(tag, msg)
+            while (mes.length> max_str_length){
+                Log.e(tag,mes.substring(0, max_str_length))
+                mes = mes.substring(max_str_length)
+            }
+            Log.e(tag, mes)
         }
     }
 
