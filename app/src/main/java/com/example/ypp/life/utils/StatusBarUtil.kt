@@ -162,6 +162,7 @@ object StatusBarUtil {
      * @param activity       需要设置的activity
      * @param statusBarAlpha 状态栏透明度
      */
+    @JvmStatic
     fun setTranslucentForCoordinatorLayout(activity: Activity, @IntRange(from = 0, to = 255) statusBarAlpha: Int) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
             return

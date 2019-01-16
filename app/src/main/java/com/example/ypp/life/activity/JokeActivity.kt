@@ -1,7 +1,11 @@
 package com.example.ypp.life.activity
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.support.v7.widget.LinearLayoutManager
+import android.view.WindowManager
 import android.view.animation.ScaleAnimation
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.example.ypp.life.R
@@ -35,9 +39,15 @@ class JokeActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        overridePendingTransition(R.anim.test_anim,R.anim.test_anim)
+//        overridePendingTransition(R.anim.test_anim,R.anim.test_anim)
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_joke)
-        StatusBarUtil.setTranslucentForCoordinatorLayout(this, 127)
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            startActivity(Intent(this,Main3Activity::class.java))
+        },2000)
+//        StatusBarUtil.setTranslucentForCoordinatorLayout(this, 127)
         adapter = JokeAdapter(R.layout.joke_item, jokeArrry)
         adapter.setOnLoadMoreListener {
             page++
@@ -63,9 +73,9 @@ class JokeActivity : BaseActivity() {
                     adapter.loadMoreComplete()
                     if (it != null) {
                         if (it.result!!.data!!.isNotEmpty()) {
-                            SPUtils.put(Constants.JOKE_TIME, it.result!!.data!!.last().unixtime.toString())
-                            Logger.e(it.result!!.data!!.last().unixtime.toString())
-                            jokeArrry.addAll(it.result!!.data!!)
+                            SPUtils.put(Constants.JOKE_TIME, it.result?.data?.last()?.unixtime.toString())
+                            Logger.e(it.result?.data?.last()?.unixtime.toString())
+                            jokeArrry.addAll(it.result?.data!!)
                             adapter.notifyDataSetChanged()
                         } else {
                             SPUtils.put(Constants.JOKE_TIME, "1418745237")

@@ -24,6 +24,7 @@ object Logger {
         }
     }
 
+    @JvmStatic
     fun e(@NonNull msg: String) {
         var mes = msg
         if (isLog) {
